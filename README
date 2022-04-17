@@ -1,0 +1,67 @@
+# Author:           Khanh Vu
+# Lab:              Lab_7: Database use in Python
+# Date:             02.22.2022
+# Sources:          Murach's Python Programming - Beginner... Chapter 14_ How to define and use your own classes
+                    Murach's Python Programming - Beginner... Chapter 16_ Database
+                    CIS-133Y- Python Programming I Lecture Notes - Module 6: OOP
+                    CIS-133Y- Python Programming I Lecture Notes - Module 7: Database Development
+                    Lab 6 specification
+
+# Description:
+
+    The program Name Data Viewer uses object(s) created from the Name class. This program fetches name data from a
+a Microsoft SQL Server database server and prints out the results to the screen.
+
+    The Name class is stored in a module named Name (Name.py). This code use object(s) from the Database class to define
+a static method. This code defines a constructor that stores values for name, year, gender, and count for the object.
+This code also has setters and getters for the 4 properties above. Then,it defines a static method called readName()
+which call Database.readName() and return its results.
+
+    The Database class is stored in a module named Database (Database.py). This code defines two class method called
+readNames() and connect().
+        - The method connect() makes a connection to the NAMES database.
+        - The readNames() fetch name data from the Database based on filtered criteria. This method calls cls.connect()
+        and takes two parameters: gender, and year which are used to filter the results. It contains the SQL query where
+        the  two parameters are passed to the WHERE clause(use parameter binding. When called, the method return a list
+        of Name objects that match the criteria.
+
+    The main (main.py) contains the main code of the program. This code imports the Name class from the Name module.
+    The main code asks user to enter value for the search criteria and use the readNames() method from Name module to
+    fetch the matching Name objects. Then, it should write those objects to the console.
+
+   The program need to validate user inputs. Gender should be restricted to M or F, Year should be a whole number
+   between 1915 and 2014, Name should be non-empty, and NameCount should be a whole number between 5 and 200,000.
+
+   Example:
+
+    Select a year between 1915 and 2014: x
+    Please enter a whole number!
+    Select a year between 1915 and 2014: 1900
+    The year must be between 1915 and 2014!
+    Select a year between 1915 and 2014: 1962
+    Please enter a gender (M/F): x
+    Please type M or F!
+    Please enter a gender (M/F): M
+    20 most popular names for M babies in 1962:
+
+  Year   Name                  Gender    Count
+  1962   Michael                 M       85046
+  1962   David                   M       81328
+  1962   John                    M       78447
+  1962   James                   M       72563
+  1962   Robert                  M       70214
+  1962   Mark                    M       53522
+  1962   William                 M       44862
+  1962   Richard                 M       39424
+  1962   Thomas                  M       36536
+  1962   Jeffrey                 M       33531
+  1962   Scott                   M       30711
+  1962   Steven                  M       30703
+  1962   Joseph                  M       30093
+  1962   Kevin                   M       28356
+  1962   Charles                 M       27590
+  1962   Timothy                 M       27085
+  1962   Daniel                  M       25553
+  1962   Kenneth                 M       25247
+  1962   Paul                    M       23804
+  1962   Brian                   M       23244
